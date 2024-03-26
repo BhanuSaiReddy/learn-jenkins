@@ -37,3 +37,13 @@ pipeline {
         }
     }
 }
+
+
+stage('Code Deploy') {
+            steps {
+                echo 'Checking code security...'
+                // Add your code security checking steps here
+            }
+        }
+    }
+}
