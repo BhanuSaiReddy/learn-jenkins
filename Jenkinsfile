@@ -35,14 +35,11 @@ pipeline {
                 // Add your code security checking steps here
             }
         }
-    }
-}
 
-
-stage('Code Deploy') {
+        stage('Code Deploy') {
             steps {
-                echo 'Checking code security...'
-                // Add your code security checking steps here
+                echo 'Deploying code...'
+                // Add your code deployment steps here
             }
         }
     }
