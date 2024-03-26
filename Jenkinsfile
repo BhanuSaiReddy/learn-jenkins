@@ -35,5 +35,12 @@ pipeline {
                 // Add your code security checking steps here
             }
         }
+
+        stage('Code Deploy') {
+            steps {
+                echo 'Deploying code...'
+                // Add your code deployment steps here
+            }
+        }
     }
 }
