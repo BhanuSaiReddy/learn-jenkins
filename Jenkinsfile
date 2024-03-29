@@ -1,46 +1,38 @@
 pipeline {
     agent any
-
+    environment {
+        TEST_URL = "google.com"
+    }
     stages {
-        stage('Hello') {
+        stage('Build') {
             steps {
-                echo 'Hello World'
+                // Your build steps here
             }
-        }
-
-        stage('Compile') {
-            steps {
-                echo 'Compiling code...'
-                // Add your compilation steps here
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Running tests...'
-                // Add your testing steps here
-            }
-        }
-
-        stage('Code Quality') {
-            steps {
-                echo 'Checking code quality...'
-                // Add your code quality checking steps here
-            }
-        }
-
-        stage('Code Secure') {
-            steps {
-                echo 'Checking code security...'
-                // Add your code security checking steps here
-            }
-        }
-
-        stage('Code Deploy') {
-            steps {
-                echo 'Deploying code...'
-                // Add your code deployment steps here
+            post {
+                success {
+                    echo 'Build successful'
+                    // Actions to perform on successful build
+                    // For example: Send email, trigger another job, update JIRA status
+                    // SendEmail()
+                    // TriggerAnotherJob()
+                    // UpdateJIRAStatus()
+                }
+                failure {
+                    echo 'Build failed'
+                    // Actions to perform on failed build
+                }
+                always {
+                    echo 'Post'
+                    // Actions to perform regardless of build result
+                    // For example: Send email, trigger another job, update JIRA status
+                    // SendEmail()
+                    // TriggerAnotherJob()
+                    // UpdateJIRAStatus()
+                }
             }
         }
     }
 }
+
+// Define functions for actions like SendEmail, TriggerAnotherJob, UpdateJIRAStatus
+// You need to define these functions according to your Jenkins setup
