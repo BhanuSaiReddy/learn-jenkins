@@ -24,9 +24,9 @@ pipeline {
 
         triggers { pollSCM('*/1 * * * *') }
 
-        tools {
-           maven 'maven'
-         }
+        //tools {
+           //maven 'maven'
+         //}
 
     stages {
         stage('Preparation') {
@@ -40,6 +40,13 @@ pipeline {
                 }
             }
         }
+
+        stage('Compile') {
+            input {
+               message "Should we continue?"
+                ok "Yes, we should."
+              }
+
 
         stage('Build') {
             steps {
