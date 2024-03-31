@@ -1,12 +1,18 @@
 pipeline {
-    agent any
-
+    agent { node { label 'workstation' } }
     stages {
         stage('Hello') {
             steps {
                 echo 'Hello World'
             }
         }
+
+    }
+}
+
+environment {
+  TEST_URL = "google.com"
+  }
 
         stage('Compile') {
             steps {
@@ -44,4 +50,4 @@ pipeline {
         }
     }
 }
-#Bhanu
+
