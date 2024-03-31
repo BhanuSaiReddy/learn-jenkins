@@ -1,18 +1,16 @@
 pipeline {
     agent { node { label 'workstation' } }
+
+    environment {
+        TEST_URL = "google.com"
+    }
+
     stages {
         stage('Hello') {
             steps {
                 echo 'Hello World'
             }
         }
-
-    }
-}
-
-environment {
-  TEST_URL = "google.com"
-  }
 
         stage('Compile') {
             steps {
@@ -50,4 +48,3 @@ environment {
         }
     }
 }
-
