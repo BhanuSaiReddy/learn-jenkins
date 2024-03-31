@@ -36,7 +36,7 @@ pipeline {
                      echo SSH
                     sh 'env'
                     sh 'ansible -i 172.31.27.197, all -e ansible_user=${SSH_USR} -e ansible_password=${SSH_PSW} -m ping'
-                    sh 'mvn version'
+                    //sh 'mvn version'
                 }
             }
         }
@@ -46,7 +46,7 @@ pipeline {
                message "Should we continue?"
                 ok "Yes, we should."
               }
-
+         }
 
         stage('Build') {
             steps {
