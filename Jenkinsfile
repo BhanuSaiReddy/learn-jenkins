@@ -1,5 +1,5 @@
 pipeline {
-    agent { node { label 'workstation' } }
+    agent { node { label 'Workstation' } }
 
     environment {
         TEST_URL = "google.com"
