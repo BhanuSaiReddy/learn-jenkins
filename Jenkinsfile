@@ -6,11 +6,16 @@ pipeline {
         SSH = credentials("centos-ssh")
     }
 
-    // Moving echo commands here
-    echo TEST_URL
-    echo SSH
-
     stages {
+        stage('Preparation') {
+            steps {
+                script {
+                    echo TEST_URL
+                    echo SSH
+                }
+            }
+        }
+
         stage('Build') {
             steps {
                 echo 'Building...'
