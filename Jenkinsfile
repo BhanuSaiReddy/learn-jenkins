@@ -1,22 +1,38 @@
 pipeline {
   agent none
+
   stages {
     stage('Back-end') {
       agent {
-        docker { image 'maven:3.8.1-adoptopenjdk-11' }
+        docker {
+          image 'ubuntu:latest'  // Use a base image
+          args '--user=root'     // Run as root to install packages
+        }
       }
       steps {
-        echo "Running Maven inside Docker"
-        sh 'mvn --version'
+        echo "Installing Maven inside the container"
+        sh '''
+          apt-get update
+          apt-get install -y maven openjdk-11-jdk
+          mvn --version
+        '''
       }
     }
+
     stage('Front-end') {
       agent {
-        docker { image 'node:16-alpine' }
+        docker {
+          image 'node:16-alpine'
+          args '--user=root'
+        }
       }
       steps {
-        echo "Running Node.js inside Docker"
-        sh 'node --version'
+        echo "Installing Node.js inside the container"
+        sh '''
+          apk add --no-cache nodejs npm
+          node --version
+          npm --version
+        '''
       }
     }
   }
