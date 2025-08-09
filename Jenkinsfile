@@ -33,6 +33,13 @@ pipeline {
           node --version
           npm --version
         '''
+        steps {
+        echo "Installing Node.js inside the container"
+        sh '''
+          apk add --no-cache nodejs npm
+          node --version
+          npm --version
+        '''
       }
     }
   }
